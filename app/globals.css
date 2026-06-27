@@ -1,0 +1,185 @@
+/* ============================================================
+   COZ COMPASS — global styles
+   Brand tokens, reset, keyframes and reveal utilities.
+   Section layout lives in CSS modules next to each component.
+   ============================================================ */
+
+:root {
+  /* surfaces */
+  --ink: #0a0c0e;
+  --ink-deep: #07090b;
+  --panel: #0c0e11;
+  --panel-hover: #11141a;
+  /* text */
+  --text: #edeff1;
+  --text-bright: #f4f6f8;
+  --text-hi: #f7f8fa;
+  --muted: #98a2ac;
+  --muted-2: #8e98a2;
+  --faint: #5e6770;
+  --faintest: #4e575f;
+  /* brand accents — the 4 C's */
+  --orange: #ff7f32;
+  --orange-soft: #ff8a45;
+  --blue: #298fc2;
+  --blue-soft: #4fa2d6;
+  --green: #6cc24a;
+  --capitalize: #e8ebee;
+
+  /* light theme — site body (the dark hero keeps the surfaces above) */
+  --paper: #f4f5f7; /* page background */
+  --paper-soft: #eceef1;
+  --surface: #ffffff; /* cards */
+  --ink-900: #0e1116; /* primary text on light */
+  --ink-700: #39414b;
+  --ink-500: #6b7280; /* muted text */
+  --ink-300: #a7adb6; /* faint text */
+  --line: rgba(14, 17, 22, 0.09);
+  --line-strong: rgba(14, 17, 22, 0.16);
+
+  /* fonts (wired up by next/font in layout.tsx) */
+  --f-display: var(--font-display), "Sora", sans-serif;
+  --f-serif: var(--font-serif), "Fraunces", serif;
+  --f-body: var(--font-body), "Inter", sans-serif;
+  --f-mono: var(--font-mono), "JetBrains Mono", monospace;
+
+  --easing: cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink-900);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Lenis smooth scroll ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Hide the native cursor only on fine pointers (desktop) — the custom cursor
+   takes over there. Touch devices keep their default behaviour. */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body a,
+  body span,
+  body button {
+    cursor: none;
+  }
+}
+
+/* ---------- keyframes ---------- */
+@keyframes cozMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cozNoise {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, 1.5%);
+  }
+  50% {
+    transform: translate(1.5%, -2%);
+  }
+  75% {
+    transform: translate(-1%, -1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes cozSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- HERO reveal utilities (scoped — do NOT leak site-wide) ----------
+   Driven by `.is-lit` on the hero root. SCOPED under `.hero-reveals` so the
+   hidden base state only applies inside the hero; other sections must use their
+   own attribute names (e.g. data-rline/data-rfade) for GSAP reveals. */
+.hero-reveals [data-line] {
+  transform: translateY(115%);
+  transition: transform 1.2s var(--easing);
+}
+.hero-reveals.is-lit [data-line] {
+  transform: none;
+}
+
+.hero-reveals [data-fade] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 1s ease,
+    transform 1.05s var(--easing);
+}
+.hero-reveals.is-lit [data-fade] {
+  opacity: 1;
+  transform: none;
+}
+
+/* NOTE: section scroll reveals are handled per-component with GSAP (see Gap/Gcc).
+   There is intentionally NO global [data-reveal] hide rule — a global one silently
+   hid any element using that attribute. Don't add one back. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-line],
+  [data-fade],
+  [data-canvas-fade] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

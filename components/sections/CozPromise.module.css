@@ -1,0 +1,157 @@
+/* Dark, transparent section — reveals the fixed CompassStage behind it. */
+.section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(96px, 13vh, 150px) 0;
+  overflow: hidden;
+}
+
+/* if the content is taller than the viewport, top-align so the header stays visible */
+@media (max-height: 860px), (max-width: 1100px) {
+  .section {
+    align-items: flex-start;
+  }
+}
+
+/* left-dark scrim — IDENTICAL to the hero's so the hero→promise boundary is seamless
+   (content is on the left here; compass on the right) */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 12, 14, 0.88) 0%,
+    rgba(10, 12, 14, 0.35) 45%,
+    rgba(10, 12, 14, 0.05) 75%
+  );
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* ---------- header (full width) ---------- */
+.head {
+  position: relative;
+  margin-bottom: clamp(40px, 7vh, 72px);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  font-weight: 600;
+}
+
+.labelIndex {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(44px, 6vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-hi);
+}
+
+.line {
+  display: block;
+  padding: 0.02em 0;
+}
+
+.accent {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05em;
+  color: var(--orange);
+}
+
+.tagline {
+  margin: 26px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* ---------- pillars (left column; compass sits to the right) ---------- */
+.pillars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: min(560px, 52%);
+}
+
+.pillar {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(237, 239, 241, 0.1);
+  will-change: transform, opacity;
+}
+
+.pillar:last-child {
+  border-bottom: 1px solid rgba(237, 239, 241, 0.1);
+}
+
+.pillarNo {
+  flex: none;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  padding-top: 3px;
+}
+
+.pillarBody {
+  flex: 1;
+}
+
+.pillarTitle {
+  margin: 0 0 6px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--text-bright);
+}
+
+.pillarDesc {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .head {
+    margin-top: 22vh; /* clear the compass which sits up top on mobile */
+  }
+  .pillars {
+    width: 100%;
+  }
+}

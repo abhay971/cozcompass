@@ -1,0 +1,70 @@
+/* Transparent overlay — the dark CompassStage shows through behind it. */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  padding-bottom: clamp(80px, 16vh, 160px);
+}
+
+.wordmark {
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(28px, 4.6vw, 54px);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--text-bright);
+}
+
+.charMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0.04em 0;
+}
+
+.char {
+  display: inline-block;
+}
+
+.space {
+  display: inline-block;
+  width: 0.3em;
+}
+
+.sub {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.34em;
+  color: var(--faint);
+}
+
+.barTrack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(244, 246, 248, 0.08);
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left center;
+}

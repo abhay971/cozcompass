@@ -1,0 +1,48 @@
+/* Fixed, full-screen, behind the page. Dark base so the particle compass reads;
+   light sections sit opaque on top, dark sections stay transparent to reveal it. */
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--ink);
+  pointer-events: none;
+}
+
+/* ambient brand glows (fixed → continuous across dark sections, no clipped edge) */
+.glowBlue,
+.glowOrange {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowBlue {
+  right: -10%;
+  top: -20%;
+  width: 60%;
+  height: 90%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(41, 143, 194, 0.13) 0%, rgba(41, 143, 194, 0) 70%);
+}
+
+.glowOrange {
+  right: 10%;
+  bottom: -20%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 127, 50, 0.08) 0%, rgba(255, 127, 50, 0) 70%);
+}
+
+/* fixed left-dark scrim so copy stays readable over the compass — continuous
+   across every dark section, so adjacent dark sections have no visible seam. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 12, 14, 0.88) 0%,
+    rgba(10, 12, 14, 0.35) 45%,
+    rgba(10, 12, 14, 0.05) 75%
+  );
+}

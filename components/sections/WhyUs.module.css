@@ -1,0 +1,188 @@
+.section {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  color: var(--ink-900);
+  border-top: 1px solid var(--line-strong);
+  padding: clamp(90px, 13vh, 160px) 0;
+  overflow: hidden;
+}
+
+.container {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* ---------- header (full width) ---------- */
+.head {
+  margin: 0 0 clamp(44px, 6vh, 72px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-weight: 600;
+}
+
+.eyebrowIndex {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(42px, 6vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+}
+
+.accent {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.04em;
+  color: var(--orange);
+}
+
+.sub {
+  margin: 26px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-500);
+  text-wrap: pretty;
+}
+
+/* ---------- bento grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(40px, 6vh, 72px);
+  min-height: 220px;
+  padding: clamp(24px, 2.2vw, 34px);
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 0.84, 0.44, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 0.84, 0.44, 1),
+    border-color 0.45s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 26px 50px -32px rgba(14, 17, 22, 0.3);
+  border-color: var(--line-strong);
+}
+
+.cardNo {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(34px, 3.2vw, 50px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-300);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(19px, 1.7vw, 24px);
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+}
+
+.cardDesc {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-500);
+}
+
+/* ---------- featured (subtle solid brand blocks, no gradient) ---------- */
+.a_orange {
+  background: rgba(255, 127, 50, 0.07);
+  border-color: rgba(255, 127, 50, 0.22);
+}
+.a_orange .cardNo {
+  color: var(--orange);
+}
+
+.a_blue {
+  background: rgba(41, 143, 194, 0.07);
+  border-color: rgba(41, 143, 194, 0.24);
+}
+.a_blue .cardNo {
+  color: var(--blue);
+}
+
+.a_green {
+  background: rgba(108, 194, 74, 0.09);
+  border-color: rgba(108, 194, 74, 0.26);
+}
+.a_green .cardNo {
+  color: var(--green);
+}
+
+.card[class*="a_"]:hover {
+  box-shadow: 0 28px 56px -34px rgba(255, 127, 50, 0.4);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* every card spans 1 of 2, except featured wide ones span both */
+  .card {
+    grid-column: span 1 !important;
+  }
+  .a_orange,
+  .a_blue,
+  .a_green {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .card,
+  .a_orange,
+  .a_blue,
+  .a_green {
+    grid-column: span 1 !important;
+    min-height: 0;
+    gap: 28px;
+  }
+}

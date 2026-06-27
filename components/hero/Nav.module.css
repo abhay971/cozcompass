@@ -1,0 +1,110 @@
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 56px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logo {
+  height: 24px;
+  width: auto;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.brand:hover .logo {
+  opacity: 0.8;
+}
+
+.name {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--text-bright);
+  white-space: nowrap;
+}
+
+.name sup {
+  font-size: 8px;
+  vertical-align: super;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--muted-2);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.link:hover {
+  color: var(--text-bright);
+}
+
+.cta {
+  border: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink);
+  background: var(--text-bright);
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 99px;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Tablet: tighten spacing. */
+@media (max-width: 1024px) {
+  .nav {
+    padding: 22px 32px;
+  }
+  .links {
+    gap: 24px;
+  }
+}
+
+/* Mobile: drop the text links, keep brand + CTA. */
+@media (max-width: 720px) {
+  .nav {
+    padding: 18px 20px;
+  }
+  .link {
+    display: none;
+  }
+  .name {
+    font-size: 13px;
+  }
+  .cta {
+    padding: 11px 18px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,256 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  background: var(--ink-deep);
+  color: var(--text);
+  padding: clamp(80px, 12vh, 150px) 0 34px;
+  overflow: hidden;
+}
+
+/* subtle top hairline + a faint warm glow so it reads as a deliberate close */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -40%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 70%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 127, 50, 0.07) 0%, rgba(255, 127, 50, 0) 70%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* ---------- top: lead + nav ---------- */
+.top {
+  display: grid;
+  grid-template-columns: 1.5fr 0.9fr;
+  gap: clamp(40px, 6vw, 96px);
+  padding-bottom: clamp(40px, 6vh, 72px);
+}
+
+.logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  margin-bottom: clamp(28px, 4vh, 44px);
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(38px, 5.6vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--text-hi);
+  max-width: 14ch;
+}
+
+.accent {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.03em;
+  color: var(--orange);
+}
+
+.actions {
+  margin-top: clamp(28px, 4vh, 44px);
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: -0.01em;
+  color: var(--text-hi);
+  text-decoration: none;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.email:hover {
+  color: var(--orange);
+  gap: 18px;
+}
+
+.emailArrow {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  color: var(--orange);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.email:hover .emailArrow {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #0a0c0e;
+  transform: translateX(3px);
+}
+
+.leadNote {
+  margin: 22px 0 0;
+  max-width: 38ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---------- nav ---------- */
+.nav {
+  padding-top: 6px;
+}
+
+.colLabel {
+  display: block;
+  margin-bottom: 22px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--faint);
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.navList button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--f-body);
+  font-size: 15.5px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.navList button:hover {
+  color: var(--text-hi);
+  transform: translateX(4px);
+}
+
+/* ---------- oversized brand mark ---------- */
+.markRow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: clamp(20px, 4vh, 48px) 0 28px;
+  padding-top: clamp(24px, 4vh, 48px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 0.78;
+}
+
+.bigMark {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 800;
+  /* "COZ COMPASS" is ~7.43em wide; container inner caps at 1152px, so cap at ~152px
+     (and scale with the viewport below that) to fit the WHOLE wordmark — no clipping. */
+  font-size: clamp(40px, 11.2vw, 152px);
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.05); /* solid faded fill, not an outline */
+  user-select: none;
+}
+
+/* ---------- bottom bar ---------- */
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.copy {
+  color: var(--muted-2);
+}
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.northTag {
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.22s ease, gap 0.22s ease;
+}
+
+.toTop:hover {
+  color: var(--orange);
+  gap: 12px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bottomRight {
+    gap: 18px;
+  }
+}

@@ -1,0 +1,238 @@
+.section {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  color: var(--ink-900);
+  border-top: 1px solid var(--line-strong);
+  padding: clamp(90px, 13vh, 160px) 0;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* ---------- header (full width) ---------- */
+.head {
+  margin-bottom: clamp(48px, 8vh, 90px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-weight: 600;
+}
+
+.eyebrowIndex {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(42px, 6vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+}
+
+.accent {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.04em;
+  color: var(--orange);
+}
+
+.sub {
+  margin: 26px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-500);
+  text-wrap: pretty;
+}
+
+/* ---------- 4-stage pipeline ---------- */
+.steps {
+  --gap: clamp(20px, 3vw, 40px);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+/* connecting rail behind the nodes. Nodes are 44px and LEFT-aligned in each column,
+   so node centres sit at 22px from the column's left edge — the rail must run from the
+   first node's centre to the last node's centre (not column centres), or a gap appears. */
+.rail {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: calc(25% - 0.75 * var(--gap) - 22px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), var(--blue), var(--green), var(--ink-900));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  will-change: transform, opacity;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: 0 6px 20px -8px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.nodeNo {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.stepTitle {
+  margin: 22px 0 8px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink-900);
+}
+
+.stepDesc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-500);
+  text-wrap: pretty;
+}
+
+/* ---------- accountability band ---------- */
+.accountability {
+  margin-top: clamp(48px, 7vh, 84px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(28px, 4vw, 52px);
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--orange) 35%, var(--line));
+  background: color-mix(in srgb, var(--orange) 6%, var(--surface));
+  box-shadow: 0 30px 70px -50px color-mix(in srgb, var(--orange) 60%, transparent);
+  will-change: transform, opacity;
+}
+
+.accTag {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.accTitle {
+  margin: 0 0 14px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+
+.accDesc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-700);
+  text-wrap: pretty;
+}
+
+.accGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.accItem {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.accItem:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.accKey {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+}
+
+.accVal {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+  .rail {
+    display: none;
+  }
+  .accountability {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}

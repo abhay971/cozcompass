@@ -1,0 +1,125 @@
+.section {
+  position: relative;
+  background: var(--surface);
+  color: var(--ink-900);
+  border-top: 1px solid var(--line-strong);
+  padding: 0 0 clamp(80px, 12vh, 150px);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* ---------- top meta row ---------- */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(40px, 7vh, 80px);
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-700);
+  font-weight: 600;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.metaNote {
+  color: var(--ink-300);
+}
+
+/* ---------- scroll-fill manifesto ---------- */
+.statement {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(23px, 2.8vw, 42px);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+}
+
+.punch {
+  margin: clamp(24px, 3.5vh, 44px) 0 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 0.26em;
+  color: var(--ink-900);
+}
+
+.num {
+  color: var(--ink-900);
+  font-weight: 800;
+}
+
+.accent {
+  color: var(--orange);
+}
+
+/* ---------- footer ---------- */
+.footer {
+  margin-top: clamp(48px, 8vh, 96px);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font: inherit;
+  font-family: var(--f-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-900);
+  background: none;
+  border: none;
+  padding: 0 0 8px;
+  border-bottom: 1px solid var(--ink-900);
+  transition: gap 0.3s ease, border-color 0.3s ease;
+}
+
+.cta:hover {
+  gap: 18px;
+  border-color: var(--orange);
+}
+
+.cta span {
+  color: var(--orange);
+  font-size: 16px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px) {
+  .statement {
+    max-width: 100%;
+  }
+  .metaNote {
+    display: none;
+  }
+}

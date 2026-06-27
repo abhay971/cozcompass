@@ -1,0 +1,165 @@
+/* Dark, transparent — the shared CompassStage shows through and settles here. */
+.section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(100px, 16vh, 200px) 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* centred radial scrim so the copy stays legible over the compass hub */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 50% 50%, rgba(7, 9, 11, 0.82) 0%, rgba(7, 9, 11, 0.45) 55%, rgba(7, 9, 11, 0) 100%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 92%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  margin-bottom: 26px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(46px, 8vw, 116px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--text-hi);
+}
+
+.accent {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.02em;
+  color: var(--orange);
+}
+
+.sub {
+  margin: 28px 0 0;
+  max-width: 56ch;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.actions {
+  margin-top: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #0a0c0e;
+  font-family: var(--f-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 22px 60px -26px rgba(255, 127, 50, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 70px -24px rgba(255, 127, 50, 0.95);
+}
+
+.arrow {
+  transition: transform 0.25s ease;
+}
+
+.primary:hover .arrow {
+  transform: translateX(5px);
+}
+
+.secondary {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-bright);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 3px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.secondary:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.assurances {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 30px;
+  justify-content: center;
+}
+
+.assurances li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.assurances li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+@media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+  }
+}

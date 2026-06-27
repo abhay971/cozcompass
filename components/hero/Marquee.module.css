@@ -1,0 +1,48 @@
+.wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  border-top: 1px solid rgba(237, 239, 241, 0.1);
+  background: rgba(10, 12, 14, 0.55);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  padding: 21px 0;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  width: max-content;
+  animation: cozMarquee 30s linear infinite;
+}
+
+.cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.word {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.star {
+  color: #39414a;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 15px 0;
+  }
+  .word {
+    font-size: 13px;
+  }
+}
