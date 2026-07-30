@@ -2,4 +2,5 @@
 
 Deliberately vulnerable code on isolated branches. Never merged.
 
-Touched to prove the reviewer does not re-comment on lines it has already marked.
+Second no-op push: the reviewer should now recognise its own margin notes and
+post no duplicate inline comments.
