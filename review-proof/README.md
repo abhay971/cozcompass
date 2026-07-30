@@ -1,7 +1,5 @@
 # Bastion review-agent proof fixture
 
-Deliberately vulnerable code on isolated branches, seeded to prove the Phase 3.5
-reviewing agent end to end. Never merged. Safe to delete these branches at any time.
+Deliberately vulnerable code on isolated branches. Never merged.
 
-`bastion/review-base` already fails `sast-sql-injection`. `bastion/review-pr` adds a
-*second* one — the case rule-level diffing reports as `unchanged`.
+Touched to prove the reviewer does not re-comment on lines it has already marked.
