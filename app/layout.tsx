@@ -57,6 +57,11 @@ export const metadata: Metadata = {
       "A full Global Capability Center for global SMBs & SMEs — curated, verified, accountable. Zero capital. Live in days, not months.",
     type: "website",
   },
+  // Bastion domain-ownership verification — proves control of this domain so Bastion may run
+  // authorised active security testing against it. Renders <meta name="bastion-site-verification" …>.
+  other: {
+    "bastion-site-verification": "bstn_c80b2a5c04bbda01c9082e245f8016debba82eb7",
+  },
 };
 
 export const viewport: Viewport = {
